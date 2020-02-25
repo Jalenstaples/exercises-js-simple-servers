@@ -19,13 +19,13 @@ let server = net.createServer(function(connection) {
   connection.on('data', function(clientData) {
     // Use console.log to record when a client sends us data.
     // Use connection.write(...) to send data to the client
-
-    // Remember, an echo server sends back exactly what was received.
+    console.log('Message sent');
+    connection.write(clientData); // Remember, an echo server sends back exactly what was received.
   });
 
   // Print a log message when a client disconnects
   connection.on('end', function() {
-    serverLog('DISCONNET', `Client ${clientAddress} disconnected`);
+    serverLog('DISCONNECT', `Client ${clientAddress} disconnected`);
   });
 });
 

@@ -1,21 +1,11 @@
 let net = require('net');
-
 let serverLog = require('./lib/serverLog');
-
-let SERVER_PORT = 2003;
+let SERVER_PORT = 2004;
 const fs = require('fs');
-let text = fs.readFileSync('./data/motd.txt');
-
+let text = fs.readFileSync('./files/randomfiles.txt');
 let server = net.createServer(function(connection) {
   let clientAddress = connection.remoteAddress;
-
   serverLog('CONNECT', `Client at ${clientAddress} connected`);
-
-  /*
-    1. Read the contents of data/motd.txt into memory
-    2. Send the contents do the client using connection.write(...)
-    3. Close the connection
-  */
   connection.write(text);
   connection.end();
 });
